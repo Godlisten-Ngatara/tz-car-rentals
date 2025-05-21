@@ -46,7 +46,6 @@ export const addCar = async (req, res) => {
         await session.abortTransaction();
         session.endSession();
         res.status(409).json({
-            statusCode: error.statusCode,
             message: error.message,
         });
     }

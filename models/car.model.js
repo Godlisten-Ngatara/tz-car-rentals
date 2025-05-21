@@ -66,7 +66,7 @@ const carSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
-    car: {
+    company: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Company',
       required: true
@@ -76,18 +76,6 @@ const carSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
-// 👇 Composite unique index
-carSchema.index({
-  brand: 1,
-  model: 1,
-  year: 1,
-  "features.fuelType": 1,
-  "features.transmissionType": 1,
-  "features.drivingWheel": 1,
-  "features.seats": 1,
-  "features.doors": 1
-}, { unique: true });
 
 const Car = mongoose.model("Car", carSchema);
 

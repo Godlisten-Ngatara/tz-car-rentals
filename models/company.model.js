@@ -16,10 +16,25 @@ const companySchema = new mongoose.Schema({
         required: [true, 'phone required'],
         unique: true
     },
-    businessLicence: {
+    address: {
         type: String,
-        required: true,
+        required: true
     },
+    // To be added later
+    // businessLicence: {
+    //     type: String,
+    //     required: true,
+    // },
+    isVerified: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
+    registeredBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
 }, {
     timestamps: true
 })

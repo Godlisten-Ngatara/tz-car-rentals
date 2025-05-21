@@ -1,14 +1,11 @@
 import express from "express";
+import { signIn, signUp } from "../controllers/auth.controllers.js";
 
 const authRouter = express.Router();
 
-authRouter.post("/register", (req, res) => {
-  res.send({ body: "User registered successfully" });
-});
+authRouter.post("/signup", signUp);
 
-authRouter.post("/login", (req, res) => {
-  res.send({ body: "User logged in successfully" });
-});
+authRouter.post("/login", signIn);
 
 authRouter.post("/logout", (req, res) => {
   res.send({ body: "Logged out created succesfully" });
