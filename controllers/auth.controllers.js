@@ -69,8 +69,9 @@ export const signIn = async (req, res) => {
             id: existingUser._id,
             email: existingUser.email,
             userName: existingUser.userName,
+            role: existingUser.role,
         }, JWT_SECRET, {expiresIn: JWT_EXPIRES_IN})
-        
+
         res.status(201).json({
             success: true,
             message: `Welcome ${existingUser.userName}, you have successfulyy logged in`,

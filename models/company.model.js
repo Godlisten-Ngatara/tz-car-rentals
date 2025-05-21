@@ -14,7 +14,6 @@ const companySchema = new mongoose.Schema({
     phone: {
         type: String,
         required: [true, 'phone required'],
-        unique: true
     },
     address: {
         type: String,
@@ -25,7 +24,7 @@ const companySchema = new mongoose.Schema({
     //     type: String,
     //     required: true,
     // },
-    isVerified: {
+    isApproved: {
         type: Boolean,
         required: true,
         default: false,

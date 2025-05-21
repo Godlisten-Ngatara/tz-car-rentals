@@ -1,0 +1,15 @@
+{
+  "brand": "Toyota",
+  "model": "RAV4",
+  "year": "2022",
+  "rentPrice": "85",
+  "category": "SUV",
+  "features": {
+    "seats": 5,
+    "doors": 4,
+    "airCondition": true,
+    "fuelType": "petrol",
+    "transmissionType": "automatic",
+    "drivingWheel": "left"
+  }
+}

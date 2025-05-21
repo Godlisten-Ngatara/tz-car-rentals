@@ -1,6 +1,7 @@
 import express from "express";
 import { addCar } from "../controllers/car.controllers.js";
 import { verifyToken } from "../middlewares/auth.middleware.js";
+import { verifyCompany } from "../middlewares/company.middleware.js";
 const carRouter = express.Router();
 
 carRouter.get("/", verifyToken, (req, res) => {
@@ -11,7 +12,7 @@ carRouter.get("/:id", verifyToken, (req, res) => {
   res.send({ body: "A car with details" });
 });
 
-carRouter.post("/add-car", verifyToken, addCar);
+carRouter.post("/add-car", verifyToken, verifyCompany, addCar);
 
 carRouter.put("/:id", verifyToken, (req, res) => {
   res.send({ body: "Car with id is updated" });

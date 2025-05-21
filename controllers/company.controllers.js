@@ -41,18 +41,18 @@ export const addCompany = async (req, res) => {
 
 }
 
-export const verifyCompany = async (req, res) => {
+export const approveCompany = async (req, res) => {
     const session = await mongoose.startSession();
 
     session.startTransaction();
     try {
         const { id } = req.params
-        const { isVerified } = req.body
+        const { isApproved } = req.body
 
         // Check if the company profile exists
         const updatedCompany = await Company.findByIdAndUpdate(
             id,
-            { isVerified },
+            { isApproved },
             { new: true } // return the updated document
         );
 

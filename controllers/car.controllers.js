@@ -9,7 +9,7 @@ export const addCar = async (req, res) => {
     session.startTransaction();
 
     try {
-        const { brand, model, year, rentPrice, category, features, isAvailable } =
+        const { brand, model, year, rentPrice, category, features, company } =
             req.body;
 
         const existingCar = await Car.findOne({ brand, model, year, category });
@@ -28,7 +28,7 @@ export const addCar = async (req, res) => {
                 rentPrice,
                 category,
                 features,
-                isAvailable,
+                company
             },
         ]);
         await session.commitTransaction();
