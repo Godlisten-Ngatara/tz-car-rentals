@@ -67,8 +67,10 @@ export const signIn = async (req, res) => {
 
         const token = jwt.sign({
             id: existingUser._id,
-            timestamp: Date.now()
+            email: existingUser.email,
+            userName: existingUser.userName,
         }, JWT_SECRET, {expiresIn: JWT_EXPIRES_IN})
+        
         res.status(201).json({
             success: true,
             message: `Welcome ${existingUser.userName}, you have successfulyy logged in`,

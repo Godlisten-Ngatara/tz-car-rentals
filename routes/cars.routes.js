@@ -1,22 +1,23 @@
 import express from "express";
 import { addCar } from "../controllers/car.controllers.js";
+import { verifyToken } from "../middlewares/auth.middleware.js";
 const carRouter = express.Router();
 
-carRouter.get("/", (req, res) => {
+carRouter.get("/", verifyToken, (req, res) => {
   res.send({ body: "List of all cars" });
 });
 
-carRouter.get("/:id", (req, res) => {
+carRouter.get("/:id", verifyToken, (req, res) => {
   res.send({ body: "A car with details" });
 });
 
-carRouter.post("/add-car", addCar);
+carRouter.post("/add-car", verifyToken, addCar);
 
-carRouter.put("/:id", (req, res) => {
+carRouter.put("/:id", verifyToken, (req, res) => {
   res.send({ body: "Car with id is updated" });
 });
 
-carRouter.delete("/:id", (req, res) => {
+carRouter.delete("/:id", verifyToken, (req, res) => {
   res.send({ body: "car with id is deleted" });
 });
 
