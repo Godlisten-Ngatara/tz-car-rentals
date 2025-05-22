@@ -1,14 +1,15 @@
 import express from "express";
+import { verifyToken, verifyUser } from "../middlewares/auth.middleware.js";
+import { verifyRole } from "../middlewares/role.middleware.js";
+import { getUserById } from "../controllers/user.controllers.js";
 
 const userRouter = express.Router();
 
-userRouter.get("/", (req, res) => {
+userRouter.get("/", verifyToken, verifyRole, (req, res) => {
   res.send({ body: "List of all users" });
 });
 
-userRouter.get("/:id", (req, res) => {
-  res.send({ body: "A user with details" });
-});
+userRouter.get("/:id", verifyToken, verifyUser, getUserById);
 
 userRouter.put("/:id", (req, res) => {
   res.send({ body: "User with id is updated" });
