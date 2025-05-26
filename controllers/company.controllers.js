@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 import Company from "../models/company.model.js";
-
+import Car from "../models/car.model.js"
 export const addCompany = async (req, res) => {
     const session = await mongoose.startSession();
 
@@ -39,6 +39,39 @@ export const addCompany = async (req, res) => {
         });
     }
 
+}
+
+export const getCompanys = async (req, res) => {
+    try {
+        const allCompanies = await Company.find();
+        if (allCompanies === 0) {
+            res.status(200).json({
+                success: true,
+                message: "No data found",
+                data: []
+            })
+        }
+        const companiesWithCars = await Promise.all(
+            allCompanies.map(async (company) => {
+                const cars = await Car.find({ company: company._id });
+                return {
+                    ...company.toObject(),
+                    cars,
+                };
+            })
+        );
+        res.status(200).json({
+            success: true,
+            message: "",
+            data: {
+                companies: companiesWithCars
+            }
+        })
+    } catch {
+        res.status(500).json({
+            message: "Internal Server Error"
+        })
+    }
 }
 
 export const approveCompany = async (req, res) => {

@@ -1,14 +1,12 @@
 import express from 'express'
-import { addCompany, approveCompany } from '../controllers/company.controllers.js';
+import { addCompany, approveCompany, getCompanys } from '../controllers/company.controllers.js';
 import { verifyToken } from '../middlewares/auth.middleware.js';
 import { verifyRole } from '../middlewares/role.middleware.js';
 
 const companyRouter = express.Router();
 
 
-companyRouter.get('/', verifyToken, verifyRole, (req, res) => {
-    res.send({ body: 'A list of companies' })
-})
+companyRouter.get('/', verifyToken, getCompanys)
 
 companyRouter.get('/:id', verifyToken, (req, res) => {
     res.send({ body: 'Company profile' })

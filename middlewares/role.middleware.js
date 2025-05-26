@@ -7,7 +7,7 @@ export const verifyRole = (req, res, next) => {
         }
         next()
     } catch (error) {
-        res.status(401).json({
+        res.status(403).json({
             message: error.message
         })
     }

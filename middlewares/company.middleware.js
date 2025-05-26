@@ -17,3 +17,7 @@ export const verifyCompany = async(req, res, next) => {
         })
     }
 }
+
+export const verifyCompanyUser = async (req, res, next) => {
+    
+}
