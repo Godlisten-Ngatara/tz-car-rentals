@@ -3,11 +3,13 @@ import mongoose from "mongoose";
 const bookingSchema = new mongoose.Schema({
     car: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Car'
+        ref: 'Car',
+        required: true
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
     pickUpDate: {
         type: Date,
@@ -39,4 +41,5 @@ const bookingSchema = new mongoose.Schema({
 )
 
 const Bookings = mongoose.model('Bookings', bookingSchema)
+
 export default Bookings

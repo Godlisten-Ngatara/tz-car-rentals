@@ -1,0 +1,10 @@
+{
+  "car": "665052be1e761b9f51fdfcd2",
+  "user": "665053af0f3c58c788a7a10b",
+  "pickUpDate": "2025-06-01T10:00:00.000Z",
+  "dropOffDate": "2025-06-07T10:00:00.000Z",
+  "pickUpLocation": "Dar es Salaam Airport",
+  "dropOffLocation": "Arusha City Center",
+  "totalPrice": "330",
+  "status": "booked"
+}
